@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MCQs App</h1>
+
+        <!-- Student Information Page -->
+        <div id="studentInfo">
+            <h2>Student Information</h2>
+            <form id="studentForm">
+                <label for="studentName">Name:</label>
+                <input type="text" id="studentName" required>
+                <label for="studentID">ID:</label>
+                <input type="text" id="studentID" required>
+                <button type="button" onclick="startMCQs()">Start MCQs</button>
+            </form>
+        </div>
+
+        <!-- MCQs Page -->
+        <div id="mcqs" style="display: none;">
+            <h2>MCQs</h2>
+            <form id="mcqsForm">
+                <p><b>(1) My Name is ....</b></p>
+                <ul class="quiz">
+                    <li>
+                        <label><input type="radio" name="question1" value="a"> <span>eisa</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question1" value="b"> <span>musa</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question1" value="c"> <span>ameer</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question1" value="d"> <span>none of them</span></label>
+                    </li>
+                </ul>
+
+                <p><b>(2) My Elder brother Name is ....</b></p>
+                <ul class="quiz">
+                    <li>
+                        <label><input type="radio" name="question2" value="a"> <span>eisa</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question2" value="b"> <span>musa</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question2" value="c"> <span>ameer</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question2" value="d"> <span>none of them</span></label>
+                    </li>
+                </ul>
+
+                <p><b>(3) My Younger brother Name is ....</b></p>
+                <ul class="quiz">
+                    <li>
+                        <label><input type="radio" name="question3" value="a"> <span>eisa</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question3" value="b"> <span>musa</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question3" value="c"> <span>ameer</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question3" value="d"> <span>none of them</span></label>
+                    </li>
+                </ul>
+
+                <p><b>(4) I Study in ....</b></p>
+                <ul class="quiz">
+                    <li>
+                        <label><input type="radio" name="question4" value="a"> <span>uet</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question4" value="b"> <span>aup</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question4" value="c"> <span>uop</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question4" value="d"> <span>none of them</span></label>
+                    </li>
+                </ul>
+
+                <p><b>(5) I am doing my web development course from ....</b></p>
+                <ul class="quiz">
+                    <li>
+                        <label><input type="radio" name="question5" value="a"> <span>islamiya it academy</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question5" value="b"> <span>Saylani (SMIT)</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question5" value="c"> <span>Dg skill</span></label>
+                    </li>
+                    <li>
+                        <label><input type="radio" name="question5" value="d"> <span>none of them</span></label>
+                    </li>
+                </ul>
+
+                <button type="button" onclick="submitMCQs()">Submit</button>
+            </form>
+        </div>
+
+        <!-- Results Page -->
+        <div id="results" style="display: none;">
+            <h2>Results</h2>
+            <div id="result"></div>
+            <button type="button" onclick="goToHomePage()">Back to Home</button>
+        </div>
+    </div>
+
+    <script>
+        function startMCQs() {
+            // Fetch student information
+            const studentName = document.getElementById('studentName').value;
+            const studentID = document.getElementById('studentID').value;
+
+            // Show MCQs section and hide others
+            document.getElementById('studentInfo').style.display = 'none';
+            document.getElementById('mcqs').style.display = 'block';
+        }
+
+        function submitMCQs() {
+            // You can collect answers here and calculate results
+            const answers = {
+                'question1': document.querySelector('input[name="question1"]:checked').value,
+                'question2': document.querySelector('input[name="question2"]:checked').value,
+                'question3': document.querySelector('input[name="question3"]:checked').value,
+                'question4': document.querySelector('input[name="question4"]:checked').value,
+                'question5': document.querySelector('input[name="question5"]:checked').value
+            };
+
+            // Correct answers
+            const correctAnswers = ['a', 'b', 'c', 'b', 'b'];
+            let score = 0;
+
+            // Check answers and calculate score
+            for (let i = 0; i < correctAnswers.length; i++) {
+                if (answers[`question${i+1}`] === correctAnswers[i]) {
+                    score++;
+                }
+            }
+
+            // Display result
+            document.getElementById('result').innerHTML = `Result: ${score} out of 5`;
+
+            // Show results section and hide others
+            document.getElementById('mcqs').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+        }
+
+        function goToHomePage() {
+            // Reload the page to start over
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>
